@@ -2,6 +2,13 @@ sudo: required
 
 matrix:
   include:
+    - language: python
+      python: 3.7-dev
+      os: linux
+      env:
+        - VARIANT=python-api
+      script:
+        - dlib/travis/build-and-test.sh
     ###################
     # # Disabled because travis's OS X machines take hours (or days) to begin
     # running.  Or maybe they are just broken entirely.  Who knows.
@@ -16,7 +23,6 @@ matrix:
     - language: python
       python: 3.7-dev
       os: osx
-          linux
       osx_image: xcode9.2
       env:
         - VARIANT=python-api
