@@ -63,8 +63,9 @@ if [ "$VARIANT" = "examples" ]; then
 fi
 
 if [ "$VARIANT" = "python-api" ]; then
-  python3 setup.py test --clean
-  pip3 uninstall numpy -y
-  python3 setup.py test --clean
+  python setup.py test --clean
+  pip uninstall numpy -y
+  pip install cmake
+  python setup.py test --clean
 fi
 
