@@ -3,9 +3,9 @@
 set -eux
 
 # execute the contents of MATRIX_EVAL if it's set
-if [[ -v MATRIX_EVAL ]]; then
-    eval "${MATRIX_EVAL}"
-fi
+#if [[ -v MATRIX_EVAL ]]; then
+#    eval "${MATRIX_EVAL}"
+#fi
 
 # build dlib and tests
 if [ "$VARIANT" = "test" ]; then
@@ -63,8 +63,8 @@ if [ "$VARIANT" = "examples" ]; then
 fi
 
 if [ "$VARIANT" = "python-api" ]; then
-  python setup.py test --clean
-  pip uninstall numpy -y
-  python setup.py test --clean
+  python3 setup.py test --clean
+  pip3 uninstall numpy -y
+  python3 setup.py test --clean
 fi
 
