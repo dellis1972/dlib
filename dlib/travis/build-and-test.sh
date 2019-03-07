@@ -63,9 +63,11 @@ if [ "$VARIANT" = "examples" ]; then
 fi
 
 if [ "$VARIANT" = "python-api" ]; then
+  python -m pip install --upgrade pip
   python setup.py test --clean
   pip uninstall numpy -y
   pip install cmake
   python setup.py test --clean
+  python setup.py install
 fi
 
