@@ -18,6 +18,9 @@ jobs:
   pool:
     vmImage: ubuntu-16.04
   steps:
+    - task: UsePythonVersion@0
+      inputs:
+      versionSpec: '3.7'
     - bash: |
         sudo apt -y update
         sudo apt install python3-setuptools -y
@@ -29,11 +32,14 @@ jobs:
       displayName: upload artifacts
       inputs:
         artifactName: binaries
-        pathtoPublish: build/lib.linux-x86_64-3.5/dlib.cpython-35m-x86_64-linux-gnu.so
+        pathtoPublish: build/lib.linux-x86_64-3.7/dlib.cpython-37m-x86_64-linux-gnu.so
 - job: buildWindows
   pool:
     vmImage: windows-2019
   steps:
+    - task: UsePythonVersion@0
+      inputs:
+      versionSpec: '3.7'
     - script: |
         python -m pip install --upgrade pip
         python -m pip install cmake
@@ -42,4 +48,4 @@ jobs:
       displayName: upload artifacts
       inputs:
         artifactName: binaries
-        pathtoPublish: build\lib.win-amd64-3.6\dlib.cp36-win_amd64.pyd
+        pathtoPublish: build\lib.win-amd64-3.7\dlib.cp37-win_amd64.pyd
