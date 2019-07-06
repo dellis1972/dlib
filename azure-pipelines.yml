@@ -15,7 +15,7 @@ jobs:
   steps:
     - bash: |
         sudo apt -y update
-        sudo apt install ninja-build -y
+        sudo apt install python3-setuptools -y
     - script: |
         python3 -m pip install --upgrade pip
         python3 -m pip install --user cmake
