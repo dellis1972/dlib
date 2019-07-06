@@ -9,8 +9,6 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install cmake
         python3 setup.py build
-    - bash: |
-        find build/* | grep .dylib
 - job: buildlinux
   pool:
     vmImage: ubuntu-16.04
@@ -20,15 +18,13 @@ jobs:
         sudo apt install ninja-build -y
     - script: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install cmake
+        python3 -m pip install --user cmake
         python3 setup.py build
-    - bash: |
-        find build/* | grep .so
-- job: buildwindows
+- job: buildWindows
   pool:
     vmImage: windows-2019
   steps:
     - script: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install cmake
-        python3 setup.py build
+        python -m pip install --upgrade pip
+        python -m pip install cmake
+        python setup.py build
