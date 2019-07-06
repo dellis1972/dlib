@@ -9,6 +9,11 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install cmake
         python3 setup.py build
+    - task: PublishBuildArtifacts@1
+      displayName: upload artifacts
+      inputs:
+        artifactName: binaries
+        pathtoPublish: build/lib.macosx-10.13-x86_64-3.7/dlib.cpython-37m-darwin.so
 - job: buildlinux
   pool:
     vmImage: ubuntu-16.04
@@ -20,6 +25,11 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install --user cmake
         python3 setup.py build
+    - task: PublishBuildArtifacts@1
+      displayName: upload artifacts
+      inputs:
+        artifactName: binaries
+        pathtoPublish: build/lib.linux-x86_64-3.5/dlib.cpython-35m-x86_64-linux-gnu.so
 - job: buildWindows
   pool:
     vmImage: windows-2019
@@ -28,3 +38,8 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install cmake
         python setup.py build
+    - task: PublishBuildArtifacts@1
+      displayName: upload artifacts
+      inputs:
+        artifactName: binaries
+        pathtoPublish: build\lib.win-amd64-3.6\dlib.cp36-win_amd64.pyd
